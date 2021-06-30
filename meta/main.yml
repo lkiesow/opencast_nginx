@@ -1,0 +1,21 @@
+galaxy_info:
+  author: Lars Kiesow
+  role_name: opencast_nginx
+  namespace: lkiesow
+  description: Installs and prepares Nginx for Opencast
+  license: BSD-3-Clause
+  min_ansible_version: 2.9
+  galaxy_tags:
+    - opencast
+  platforms:
+    - name: EL
+      versions:
+        - 7
+        - 8
+    - name: Debian
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+dependencies: []

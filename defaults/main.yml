@@ -1,0 +1,3 @@
+---
+opencast_cors_urls: []
+opencast_storage_downloads_path: /srv/opencast/downloads/
