@@ -2,7 +2,7 @@ Ansible: Opencast Nginx Role
 ============================
 
 This Ansible role installs and prepares Nginx as reverse proxy for Opencast.
-if no certificate is present, this role deploys a dummy certificate which allows Nginx 
+If no certificate is present, this role deploys a dummy certificate which allows Nginx to start up.
 
 Role Variables
 --------------
@@ -27,7 +27,7 @@ Example of how to configure and use the role:
 
 This will leave you with an invalid dummy certificate.
 You will need to replace it with a valid one before booting up Opencast.
-You can do that with something like:
+The role will _not_ replace an existing certificate so you can safely use a `file` task to deploy it afterwards:
 
 ```yaml
 - hosts: servers
