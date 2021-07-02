@@ -7,8 +7,8 @@ If no certificate is present, this role deploys a dummy certificate which allows
 Role Variables
 --------------
 
-- `opencast_storage_path`
-    - Path to Opencast's download directory (default: `/srv/opencast/downloads/`)
+- `opencast_storage_downloads_path`
+    - Path to Opencast's downloads directory (default: `/srv/opencast/downloads/`)
 - `opencast_cors_urls`
     - List of URLs to add CORS exceptions for (default: `[]`)
 
