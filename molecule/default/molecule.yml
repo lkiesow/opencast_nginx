@@ -1,6 +1,7 @@
 ---
 dependency:
   name: galaxy
+  enabled: false
 driver:
   name: podman
 platforms:
@@ -13,6 +14,10 @@ platforms:
       - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
 provisioner:
   name: ansible
 verifier:
