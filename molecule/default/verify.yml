@@ -16,3 +16,20 @@
         validate_certs: false
         follow_redirects: none
         status_code: 502
+
+    - name: add extra configuration
+      ansible.builtin.copy:
+        content: 'location /test { return 204; }'
+        dest: /etc/nginx/conf.d/extra.conf
+
+    - name: reload nginx
+      service:
+        name: nginx
+        state: reloaded
+
+    - name: test extra configuration
+      ansible.builtin.uri:
+        url: https://127.0.0.1/test
+        validate_certs: false
+        follow_redirects: none
+        status_code: 204
