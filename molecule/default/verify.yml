@@ -1,0 +1,18 @@
+---
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: test that nginx redirects to https
+      ansible.builtin.uri:
+        url: http://127.0.0.1/
+        follow_redirects: none
+        status_code: 301
+
+    - name: test that nginx acts as proxy on https
+      ansible.builtin.uri:
+        url: https://127.0.0.1/
+        validate_certs: false
+        follow_redirects: none
+        status_code: 502
