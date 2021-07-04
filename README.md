@@ -13,6 +13,26 @@ Role Variables
     - List of URLs to add CORS exceptions for (default: `[]`)
 
 
+Additional Configuration
+------------------------
+
+While this deploys dummy TSL certificates which allow Nginx to start up,
+make sure to deploy proper certificates for production.
+To do that, copy your certificates to:
+
+- `/etc/nginx/ssl/{{ inventory_hostname }}.key`
+- `/etc/nginx/ssl/{{ inventory_hostname }}.crt`
+
+If you want to use Let's Encrypt to generate certificates, you can also include the role
+[`lkiesow.opencast_certbot`](https://galaxy.ansible.com/lkiesow/opencast_certbot)
+which will automatically generate TLS certificates for you.
+
+
+You can also add some custom configuration in the file `/etc/nginx/conf.d/extra.conf`.
+The file is included after Opencast's main `location` block.
+The role will not modify this file if it exists.
+
+
 Example Playbook
 ----------------
 

@@ -38,6 +38,16 @@
     group: root
   notify: reload nginx
 
+- name: create extra configuration file
+  copy:
+    src: extra.conf
+    dest: /etc/nginx/conf.d/extra.conf
+    owner: root
+    group: root
+    mode: '0644'
+    force: false
+  notify: reload nginx
+
 - name: install dummy tls certificate
   copy:
     src: dummy-tls-{{ item }}.pem
