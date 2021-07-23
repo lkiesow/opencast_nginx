@@ -24,7 +24,7 @@ To do that, copy your certificates to:
 - `/etc/nginx/ssl/{{ inventory_hostname }}.crt`
 
 If you want to use Let's Encrypt to generate certificates, you can also include the role
-[`lkiesow.opencast_certbot`](https://galaxy.ansible.com/lkiesow/opencast_certbot)
+[`elan.opencast_certbot`](https://galaxy.ansible.com/elan/opencast_certbot)
 which will automatically generate TLS certificates for you.
 
 
@@ -42,7 +42,7 @@ Example of how to configure and use the role:
 - hosts: servers
   become: true
   roles:
-    - role: lkiesow.opencast_nginx
+    - role: elan.opencast_nginx
 ```
 
 This will leave you with an invalid dummy certificate.
@@ -54,7 +54,7 @@ The role will _not_ replace an existing certificate so you can safely use a `fil
   become: true
   tasks:
     - include_role:
-        name: lkiesow.opencast_nginx
+        name: elan.opencast_nginx
 
     - name: install tls certificate
       copy:
