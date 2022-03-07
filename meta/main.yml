@@ -15,4 +15,10 @@ galaxy_info:
       versions:
         - 7
         - 8
+    - name: Debian
+      versions:
+        - stable
+    - name: Ubuntu
+      versions:
+        - focal
 dependencies: []
