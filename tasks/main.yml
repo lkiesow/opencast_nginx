@@ -1,12 +1,12 @@
 ---
 
 - name: install nginx
-  package:
+  ansible.builtin.package:
     name: nginx
     state: present
 
 - name: create configuration directories
-  file:
+  ansible.builtin.file:
     path: /etc/nginx/{{ item }}
     state: directory
     mode: '0755'
@@ -17,7 +17,7 @@
     - conf.d
 
 - name: configure nginx for opencast
-  template:
+  ansible.builtin.template:
     src: '{{ item }}'
     dest: /etc/nginx/{{ item }}
     mode: '0644'
@@ -30,7 +30,7 @@
     - conf.d/http.conf
 
 - name: generate diffie-hellman parameters
-  openssl_dhparam:
+  community.crypto.openssl_dhparam:
     path: /etc/nginx/ssl/dhparam.pem
     size: 2048
     mode: '0640'
@@ -39,7 +39,7 @@
   notify: reload nginx
 
 - name: create extra configuration file
-  copy:
+  ansible.builtin.copy:
     src: extra.conf
     dest: /etc/nginx/conf.d/extra.conf
     owner: root
@@ -49,7 +49,7 @@
   notify: reload nginx
 
 - name: install dummy tls certificate
-  copy:
+  ansible.builtin.copy:
     src: dummy-tls-{{ item }}.pem
     dest: /etc/nginx/ssl/{{ inventory_hostname }}.{{ item }}
     owner: root
@@ -62,7 +62,7 @@
     - crt
 
 - name: enable nginx
-  service:
+  ansible.builtin.service:
     name: nginx
     enabled: true
     state: started

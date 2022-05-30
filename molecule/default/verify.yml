@@ -21,9 +21,10 @@
       ansible.builtin.copy:
         content: 'location /test { return 204; }'
         dest: /etc/nginx/conf.d/extra.conf
+        mode: '0644'
 
     - name: reload nginx
-      service:
+      ansible.builtin.service:
         name: nginx
         state: reloaded
 

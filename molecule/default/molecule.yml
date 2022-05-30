@@ -45,7 +45,7 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
 lint: |
   set -e
-  yamllint .
+  yamllint -c .yamllint .
   ansible-lint
 provisioner:
   name: ansible
