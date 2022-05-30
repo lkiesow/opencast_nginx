@@ -1,0 +1,5 @@
+ansible
+ansible-core>=2.11
+ansible-lint
+dnspython
+yamllint
