@@ -1,6 +1,8 @@
 Ansible: Opencast Nginx Role
 ============================
 
+![molecule](https://github.com/elan-ev/opencast_nginx/actions/workflows/molecule.yml/badge.svg)
+
 This Ansible role installs and prepares Nginx as reverse proxy for Opencast.
 If no certificate is present, this role deploys a dummy certificate which allows Nginx to start up.
 
