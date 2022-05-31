@@ -17,7 +17,7 @@ galaxy_info:
         - 8
     - name: Debian
       versions:
-        - stable
+        - bullseye
     - name: Ubuntu
       versions:
         - focal
