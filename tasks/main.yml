@@ -1,11 +1,11 @@
 ---
 
-- name: install nginx
+- name: Install nginx
   ansible.builtin.package:
     name: nginx
     state: present
 
-- name: create configuration directories
+- name: Create configuration directories
   ansible.builtin.file:
     path: /etc/nginx/{{ item }}
     state: directory
@@ -16,29 +16,29 @@
     - ssl
     - conf.d
 
-- name: configure nginx for opencast
+- name: Configure nginx for opencast
   ansible.builtin.template:
     src: '{{ item }}'
     dest: /etc/nginx/{{ item }}
     mode: '0644'
     owner: root
     group: root
-  notify: reload nginx
+  notify: Reload nginx
   loop:
     - nginx.conf
     - conf.d/tls.conf
     - conf.d/http.conf
 
-- name: generate diffie-hellman parameters
+- name: Generate diffie-hellman parameters
   community.crypto.openssl_dhparam:
     path: /etc/nginx/ssl/dhparam.pem
     size: 2048
     mode: '0640'
     owner: root
     group: root
-  notify: reload nginx
+  notify: Reload nginx
 
-- name: create extra configuration file
+- name: Create extra configuration file
   ansible.builtin.copy:
     src: extra.conf
     dest: /etc/nginx/conf.d/extra.conf
@@ -46,9 +46,9 @@
     group: root
     mode: '0644'
     force: false
-  notify: reload nginx
+  notify: Reload nginx
 
-- name: install dummy tls certificate
+- name: Install dummy tls certificate
   ansible.builtin.copy:
     src: dummy-tls-{{ item }}.pem
     dest: /etc/nginx/ssl/{{ inventory_hostname }}.{{ item }}
@@ -56,12 +56,12 @@
     group: root
     mode: '0400'
     force: false
-  notify: reload nginx
+  notify: Reload nginx
   loop:
     - key
     - crt
 
-- name: enable nginx
+- name: Enable nginx
   ansible.builtin.service:
     name: nginx
     enabled: true
