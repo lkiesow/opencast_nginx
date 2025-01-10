@@ -3,44 +3,33 @@ dependency:
   name: galaxy
   enabled: false
 driver:
-  name: podman
+  name: containers
 platforms:
-  - name: opencast-nginx-centos8
-    image: quay.io/centos/centos:stream8
-    pre_build_image: false
-    command: /sbin/init
-    tmpfs:
-      - /run
-      - /tmp
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: opencast-nginx-centos9
     image: quay.io/centos/centos:stream9
     pre_build_image: false
     command: /sbin/init
     tmpfs:
-      - /run
-      - /tmp
+      "/tmp": "exec"
+      "/run": "rw,noexec,nosuid,nodev"
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: opencast-nginx-debian
     image: docker.io/debian:stable
     pre_build_image: false
-    privileged: true
     command: /sbin/init
     tmpfs:
-      - /run
-      - /tmp
+      "/tmp": "exec"
+      "/run": "rw,noexec,nosuid,nodev"
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
   - name: opencast-nginx-ubuntu
-    image: docker.io/ubuntu:20.04
+    image: docker.io/ubuntu:latest
     pre_build_image: false
-    privileged: true
     command: /sbin/init
     tmpfs:
-      - /run
-      - /tmp
+      "/tmp": "exec"
+      "/run": "rw,noexec,nosuid,nodev"
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
 lint: |

@@ -13,12 +13,15 @@ galaxy_info:
   platforms:
     - name: EL
       versions:
-        - 7
         - 8
+        - 9
     - name: Debian
       versions:
         - bullseye
+        - bookworm
     - name: Ubuntu
       versions:
         - focal
+        - jammy
+        - noble
 dependencies: []

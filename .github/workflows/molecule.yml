@@ -17,6 +17,6 @@ jobs:
         run: pip3 install -r .dev_requirements.txt
 
       - name: test playbook
-        run: molecule test --driver-name docker
+        run: molecule test
         env:
           PY_COLORS: '1'
