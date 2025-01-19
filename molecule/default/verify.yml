@@ -4,31 +4,31 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: test that nginx redirects to https
+    - name: Test that nginx redirects to https
       ansible.builtin.uri:
         url: http://127.0.0.1/
         follow_redirects: none
         status_code: 301
 
-    - name: test that nginx acts as proxy on https
+    - name: Test that nginx acts as proxy on https
       ansible.builtin.uri:
         url: https://127.0.0.1/
         validate_certs: false
         follow_redirects: none
         status_code: 502
 
-    - name: add extra configuration
+    - name: Add extra configuration
       ansible.builtin.copy:
         content: 'location /test { return 204; }'
         dest: /etc/nginx/conf.d/extra.conf
         mode: '0644'
 
-    - name: reload nginx
+    - name: Reload nginx
       ansible.builtin.service:
         name: nginx
         state: reloaded
 
-    - name: test extra configuration
+    - name: Test extra configuration
       ansible.builtin.uri:
         url: https://127.0.0.1/test
         validate_certs: false

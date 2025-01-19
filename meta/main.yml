@@ -7,14 +7,14 @@ galaxy_info:
   company: ELAN e.V.
   description: Installs and prepares Nginx for Opencast
   license: BSD-3-Clause
-  min_ansible_version: 2.9
+  min_ansible_version: "2.9"
   galaxy_tags:
     - opencast
   platforms:
     - name: EL
       versions:
-        - 8
-        - 9
+        - "8"
+        - "9"
     - name: Debian
       versions:
         - bullseye
