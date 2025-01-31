@@ -16,9 +16,9 @@ to generate Diffie-Hellman parameters. You therefor need to have the [community.
 Role Variables
 --------------
 
-- `opencast_storage_downloads_path`
+- `opencast_nginx_storage_downloads_path`
     - Path to Opencast's downloads directory (default: `/srv/opencast/downloads/`)
-- `opencast_cors_urls`
+- `opencast_nginx_cors_urls`
     - List of URLs to add CORS exceptions for (default: `[]`)
 
 
