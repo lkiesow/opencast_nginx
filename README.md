@@ -36,10 +36,12 @@ If you want to use Let's Encrypt to generate certificates, you can also include 
 [`elan.opencast_certbot`](https://galaxy.ansible.com/elan/opencast_certbot)
 which will automatically generate TLS certificates for you.
 
-
 You can also add some custom configuration in the file `/etc/nginx/conf.d/extra.conf`.
 The file is included after Opencast's main `location` block.
 The role will not modify this file if it exists.
+
+Additionally you can define other virtual hosts in `/etc/nginx/sites-enabled/` directory.
+They will be loaded as well.
 
 
 Example Playbook
@@ -72,7 +74,7 @@ The role will _not_ replace an existing certificate so you can safely use a `fil
         owner: root
         group: root
         mode: '0400'
-      notify: reload nginx
+      notify: Reload nginx
       loop:
         - key
         - crt
