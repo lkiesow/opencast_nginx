@@ -11,12 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - name: install dependencies
+      - name: Install dependencies
         run: pip3 install -r .dev_requirements.txt
 
-      - name: test playbook
+      - name: Install Ansbile dependencies
+        run: ansible-galaxy install git+file://$(pwd)
+
+      - name: Test playbook
         run: molecule test
         env:
           PY_COLORS: '1'
